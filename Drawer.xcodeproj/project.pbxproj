@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D693B541B29E162004F6F4A /* ObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D693B531B29E162004F6F4A /* ObjectExtension.m */; };
+		6DB91E161B29DE1F009DFAE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB91E151B29DE1F009DFAE8 /* Foundation.framework */; };
+		6DB91E181B29DE29009DFAE8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB91E171B29DE29009DFAE8 /* AppKit.framework */; };
+		6DB91E1C1B29DE90009DFAE8 /* Drawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB91E1B1B29DE90009DFAE8 /* Drawer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6D4C1C2F1B29D5B100D545EF /* Drawer.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Drawer.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D4C1C321B29D5B100D545EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D693B521B29E162004F6F4A /* ObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectExtension.h; path = Drawer/ObjectExtension.h; sourceTree = "<group>"; };
+		6D693B531B29E162004F6F4A /* ObjectExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectExtension.m; path = Drawer/ObjectExtension.m; sourceTree = "<group>"; };
+		6DB91E151B29DE1F009DFAE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6DB91E171B29DE29009DFAE8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		6DB91E1A1B29DE90009DFAE8 /* Drawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Drawer.h; path = Drawer/Drawer.h; sourceTree = "<group>"; };
+		6DB91E1B1B29DE90009DFAE8 /* Drawer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Drawer.m; path = Drawer/Drawer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D4C1C2C1B29D5B100D545EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DB91E181B29DE29009DFAE8 /* AppKit.framework in Frameworks */,
+				6DB91E161B29DE1F009DFAE8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D4C1C261B29D5B100D545EF = {
+			isa = PBXGroup;
+			children = (
+				6DB91E1D1B29DEA3009DFAE8 /* Classes */,
+				6D4C1C311B29D5B100D545EF /* Drawer */,
+				6D4C1C301B29D5B100D545EF /* Products */,
+				6DB91E191B29DE33009DFAE8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6D4C1C301B29D5B100D545EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D4C1C2F1B29D5B100D545EF /* Drawer.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D4C1C311B29D5B100D545EF /* Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				6D4C1C321B29D5B100D545EF /* Info.plist */,
+			);
+			path = Drawer;
+			sourceTree = "<group>";
+		};
+		6DB91E191B29DE33009DFAE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DB91E171B29DE29009DFAE8 /* AppKit.framework */,
+				6DB91E151B29DE1F009DFAE8 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6DB91E1D1B29DEA3009DFAE8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6DB91E1A1B29DE90009DFAE8 /* Drawer.h */,
+				6DB91E1B1B29DE90009DFAE8 /* Drawer.m */,
+				6D693B521B29E162004F6F4A /* ObjectExtension.h */,
+				6D693B531B29E162004F6F4A /* ObjectExtension.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D4C1C2E1B29D5B100D545EF /* Drawer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D4C1C351B29D5B100D545EF /* Build configuration list for PBXNativeTarget "Drawer" */;
+			buildPhases = (
+				6D4C1C2B1B29D5B100D545EF /* Sources */,
+				6D4C1C2C1B29D5B100D545EF /* Frameworks */,
+				6D4C1C2D1B29D5B100D545EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Drawer;
+			productName = Drawer;
+			productReference = 6D4C1C2F1B29D5B100D545EF /* Drawer.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D4C1C271B29D5B100D545EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Maxim Makhun";
+				TargetAttributes = {
+					6D4C1C2E1B29D5B100D545EF = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 6D4C1C2A1B29D5B100D545EF /* Build configuration list for PBXProject "Drawer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6D4C1C261B29D5B100D545EF;
+			productRefGroup = 6D4C1C301B29D5B100D545EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D4C1C2E1B29D5B100D545EF /* Drawer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D4C1C2D1B29D5B100D545EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D4C1C2B1B29D5B100D545EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D693B541B29E162004F6F4A /* ObjectExtension.m in Sources */,
+				6DB91E1C1B29DE90009DFAE8 /* Drawer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6D4C1C331B29D5B100D545EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6D4C1C341B29D5B100D545EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6D4C1C361B29D5B100D545EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Drawer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.Drawer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		6D4C1C371B29D5B100D545EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Drawer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.Drawer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D4C1C2A1B29D5B100D545EF /* Build configuration list for PBXProject "Drawer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D4C1C331B29D5B100D545EF /* Debug */,
+				6D4C1C341B29D5B100D545EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D4C1C351B29D5B100D545EF /* Build configuration list for PBXNativeTarget "Drawer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D4C1C361B29D5B100D545EF /* Debug */,
+				6D4C1C371B29D5B100D545EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D4C1C271B29D5B100D545EF /* Project object */;
+}
