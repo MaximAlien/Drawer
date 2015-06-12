@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D693B541B29E162004F6F4A /* ObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D693B531B29E162004F6F4A /* ObjectExtension.m */; };
 		6DB91E161B29DE1F009DFAE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB91E151B29DE1F009DFAE8 /* Foundation.framework */; };
 		6DB91E181B29DE29009DFAE8 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB91E171B29DE29009DFAE8 /* AppKit.framework */; };
 		6DB91E1C1B29DE90009DFAE8 /* Drawer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB91E1B1B29DE90009DFAE8 /* Drawer.m */; };
@@ -16,8 +15,6 @@
 /* Begin PBXFileReference section */
 		6D4C1C2F1B29D5B100D545EF /* Drawer.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Drawer.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D4C1C321B29D5B100D545EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6D693B521B29E162004F6F4A /* ObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectExtension.h; path = Drawer/ObjectExtension.h; sourceTree = "<group>"; };
-		6D693B531B29E162004F6F4A /* ObjectExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectExtension.m; path = Drawer/ObjectExtension.m; sourceTree = "<group>"; };
 		6DB91E151B29DE1F009DFAE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6DB91E171B29DE29009DFAE8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		6DB91E1A1B29DE90009DFAE8 /* Drawer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Drawer.h; path = Drawer/Drawer.h; sourceTree = "<group>"; };
@@ -77,8 +74,6 @@
 			children = (
 				6DB91E1A1B29DE90009DFAE8 /* Drawer.h */,
 				6DB91E1B1B29DE90009DFAE8 /* Drawer.m */,
-				6D693B521B29E162004F6F4A /* ObjectExtension.h */,
-				6D693B531B29E162004F6F4A /* ObjectExtension.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -90,9 +85,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4C1C351B29D5B100D545EF /* Build configuration list for PBXNativeTarget "Drawer" */;
 			buildPhases = (
+				6D0C1E941B29E96C00B6BCD5 /* ShellScript */,
 				6D4C1C2B1B29D5B100D545EF /* Sources */,
 				6D4C1C2C1B29D5B100D545EF /* Frameworks */,
-				6D4C1C2D1B29D5B100D545EF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -134,22 +129,27 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		6D4C1C2D1B29D5B100D545EF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		6D0C1E941B29E96C00B6BCD5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/python;
+			shellScript = "# Get the compatibility UUID from the current version of Xcode and update\n# the plugin's Info.plist accordingly:\n\nimport os\nimport plistlib\nimport subprocess\n\ndev_path = subprocess.check_output(['xcode-select', '-p']).strip()\nxcode_info_path = os.path.abspath(os.path.join(dev_path, '../Info'))\ncompat_uuid = subprocess.check_output(['defaults', 'read', xcode_info_path, 'DVTPlugInCompatibilityUUID']).strip()\ninfo_plist_path = os.path.join(os.getenv('BUILT_PRODUCTS_DIR'), 'Drawer.xcplugin/Contents/Info.plist')\ninfo =  plistlib.readPlist(info_plist_path)\ninfo['DVTPlugInCompatibilityUUIDs'] = [compat_uuid]\nplistlib.writePlist(info, info_plist_path)\n";
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D4C1C2B1B29D5B100D545EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D693B541B29E162004F6F4A /* ObjectExtension.m in Sources */,
 				6DB91E1C1B29DE90009DFAE8 /* Drawer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,7 +160,7 @@
 		6D4C1C331B29D5B100D545EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -174,7 +174,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -192,7 +193,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -202,7 +204,7 @@
 		6D4C1C341B29D5B100D545EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -216,7 +218,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -228,7 +231,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				INSTALL_PATH = "$(HOME)/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -238,11 +242,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
 				INFOPLIST_FILE = Drawer/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.Drawer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Debug;
@@ -251,11 +259,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
 				INFOPLIST_FILE = Drawer/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.makhun.Drawer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Release;

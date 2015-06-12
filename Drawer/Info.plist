@@ -23,6 +23,12 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 Maxim Makhun. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string></string>
+	<string>Drawer</string>
+	<key>XCGCReady</key>
+	<true/>
+	<key>XCPluginHasUI</key>
+	<false/>
+	<key>XC4Compatible</key>
+	<true/>
 </dict>
 </plist>

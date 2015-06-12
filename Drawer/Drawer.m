@@ -8,26 +8,33 @@
 
 #import "Drawer.h"
 
-@interface Drawer()
-
-@property (nonatomic, strong, readwrite) NSBundle *bundle;
-
-@end
-
 @implementation Drawer
 
-+ (instancetype)sharedPlugin
+static Drawer *sharedPlugin = nil;
+
++ (void)pluginDidLoad:(NSBundle *)plugin
+{
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedPlugin = [[self alloc] init];
+        NSLog(@"[Drawer] Plugin was loaded");
+    });
+}
+
++ (Drawer *)sharedPlugin
 {
     return sharedPlugin;
 }
 
-- (id)initWithBundle:(NSBundle *)plugin
+- (id)init
 {
+    NSLog(@"[Drawer] Called init method");
+    
     if (self = [super init])
     {
-        self.bundle = plugin;
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(didApplicationFinishLaunchingNotification:)
+                                                 selector:@selector(applicationDidFinishLaunchingNotification:)
                                                      name:NSApplicationDidFinishLaunchingNotification
                                                    object:nil];
     }
@@ -35,7 +42,7 @@
     return self;
 }
 
-- (void)didApplicationFinishLaunchingNotification:(NSNotification*)noti
+- (void)applicationDidFinishLaunchingNotification:(NSNotification*)notification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     
@@ -43,13 +50,13 @@
     if (menuItem)
     {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Action" action:@selector(doMenuAction) keyEquivalent:@""];
+        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Action" action:@selector(doAction) keyEquivalent:@""];
         [actionMenuItem setTarget:self];
         [[menuItem submenu] addItem:actionMenuItem];
     }
 }
 
-- (void)doMenuAction
+- (void)doAction
 {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:@"Action"];

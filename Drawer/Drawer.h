@@ -9,15 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 
-@class Drawer;
-
-static Drawer *sharedPlugin;
-
 @interface Drawer : NSObject
 
-+ (instancetype)sharedPlugin;
-- (id)initWithBundle:(NSBundle *)plugin;
-
-@property (nonatomic, strong, readonly) NSBundle *bundle;
 
 @end
