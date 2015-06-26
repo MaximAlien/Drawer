@@ -12,6 +12,5 @@
 @interface Drawer : NSObject
 
 @property (nonatomic, strong) NSColor *defaultColor;
-@property (nonatomic) BOOL isFirstCheck;
 
 @end

@@ -8,9 +8,11 @@
 
 #import "Drawer.h"
 
+
 @implementation Drawer
 
 static Drawer *sharedPlugin = nil;
+
 
 + (void)pluginDidLoad:(NSBundle *)plugin
 {
@@ -33,8 +35,6 @@ static Drawer *sharedPlugin = nil;
     
     if (self = [super init])
     {
-        self.isFirstCheck = YES;
-               
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunchingNotification:) name:NSApplicationDidFinishLaunchingNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectionDidChange:) name:NSTextViewDidChangeSelectionNotification object:nil];
     }
@@ -48,12 +48,6 @@ static Drawer *sharedPlugin = nil;
     {
         NSTextView *textView = (NSTextView *)[notification object];
         
-        if (self.isFirstCheck)
-        {
-            self.defaultColor = textView.backgroundColor;
-            self.isFirstCheck = NO;
-        }
-        
         NSUInteger currentCursorLocation = [[[textView selectedRanges] objectAtIndex:0] rangeValue].location;
         NSLog(@"CurrentCursorLocation = %lu", currentCursorLocation);
         
@@ -63,25 +57,10 @@ static Drawer *sharedPlugin = nil;
         NSString *selectedString = [[textView string] substringWithRange:[textView selectedRange]];
         NSLog(@"selectedString = %@", selectedString);
         
-        if ([selectedString isEqualToString:@"red"])
+        if (![selectedString isEqualTo:@""])
         {
-            textView.backgroundColor = [NSColor redColor];
-        }
-        else if ([selectedString isEqualToString:@"white"])
-        {
-            textView.backgroundColor = [NSColor whiteColor];
-        }
-        else if ([selectedString isEqualToString:@"black"])
-        {
-            textView.backgroundColor = [NSColor blackColor];
-        }
-        else if ([selectedString isEqualToString:@"cyan"])
-        {
-            textView.backgroundColor = [NSColor cyanColor];
-        }
-        else
-        {
-            textView.backgroundColor = self.defaultColor;
+            NSString *editedString = [NSString stringWithFormat:@"/*%@*/", selectedString];
+            [textView replaceCharactersInRange:[textView selectedRange] withString:editedString];
         }
     }
 }
