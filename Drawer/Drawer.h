@@ -11,6 +11,7 @@
 
 @interface Drawer : NSObject
 
-@property (nonatomic, strong) NSColor *defaultColor;
+@property (nonatomic, retain) NSTextView *textView;
+
 
 @end

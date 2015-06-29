@@ -46,22 +46,16 @@ static Drawer *sharedPlugin = nil;
 {
     if ([[notification object] isKindOfClass:[NSTextView class]])
     {
-        NSTextView *textView = (NSTextView *)[notification object];
+        self.textView = (NSTextView *)[notification object];
         
-        NSUInteger currentCursorLocation = [[[textView selectedRanges] objectAtIndex:0] rangeValue].location;
+        NSUInteger currentCursorLocation = [[[self.textView selectedRanges] objectAtIndex:0] rangeValue].location;
         NSLog(@"CurrentCursorLocation = %lu", currentCursorLocation);
         
-        NSUInteger lengthOfSelectedText = [[[textView selectedRanges] objectAtIndex:0] rangeValue].length;
+        NSUInteger lengthOfSelectedText = [[[self.textView selectedRanges] objectAtIndex:0] rangeValue].length;
         NSLog(@"LengthOfSelectedText = %lu", lengthOfSelectedText);
         
-        NSString *selectedString = [[textView string] substringWithRange:[textView selectedRange]];
+        NSString *selectedString = [[self.textView string] substringWithRange:[self.textView selectedRange]];
         NSLog(@"selectedString = %@", selectedString);
-        
-        if (![selectedString isEqualTo:@""])
-        {
-            NSString *editedString = [NSString stringWithFormat:@"/*%@*/", selectedString];
-            [textView replaceCharactersInRange:[textView selectedRange] withString:editedString];
-        }
     }
 }
 
@@ -69,20 +63,35 @@ static Drawer *sharedPlugin = nil;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSApplicationDidFinishLaunchingNotification object:nil];
     NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+    
     if (menuItem)
     {
         [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Action" action:@selector(doAction) keyEquivalent:@""];
+        
+        NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Comment" action:@selector(commentSelection) keyEquivalent:@""];
         [actionMenuItem setTarget:self];
+        [actionMenuItem setKeyEquivalentModifierMask:NSShiftKeyMask | NSFunctionKeyMask];
+        [actionMenuItem setKeyEquivalent:@"1"];
         [[menuItem submenu] addItem:actionMenuItem];
     }
 }
 
-- (void)doAction
+- (void)commentSelection
 {
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"Action"];
-    [alert runModal];
+    NSString *selectedString = [[self.textView string] substringWithRange:[self.textView selectedRange]];
+    
+    if (![selectedString isEqualTo:@""])
+    {
+        NSString *editedString = [NSString stringWithFormat:@"/*%@*/", selectedString];
+        
+        if ([self.textView shouldChangeTextInRange:[self.textView selectedRange] replacementString:editedString])
+        {
+            [[self.textView textStorage] beginEditing];
+            [self.textView.textStorage replaceCharactersInRange:[self.textView selectedRange] withString:editedString];
+            [[self.textView textStorage] endEditing];
+            [self.textView didChangeText];
+        }
+    }
 }
 
 - (void)dealloc
