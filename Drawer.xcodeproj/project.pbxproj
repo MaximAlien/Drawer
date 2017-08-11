@@ -100,7 +100,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D4C1C351B29D5B100D545EF /* Build configuration list for PBXNativeTarget "Drawer" */;
 			buildPhases = (
-				6D0C1E941B29E96C00B6BCD5 /* ShellScript */,
 				6D4C1C2B1B29D5B100D545EF /* Sources */,
 				6D4C1C2C1B29D5B100D545EF /* Frameworks */,
 				6D57567A1E9CFE80003C7AD9 /* Resources */,
@@ -157,22 +156,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		6D0C1E941B29E96C00B6BCD5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/python;
-			shellScript = "# Get the compatibility UUID from the current version of Xcode and update\n# the plugin's Info.plist accordingly:\n\nimport os\nimport plistlib\nimport subprocess\n\ndev_path = subprocess.check_output(['xcode-select', '-p']).strip()\nxcode_info_path = os.path.abspath(os.path.join(dev_path, '../Info'))\ncompat_uuid = subprocess.check_output(['defaults', 'read', xcode_info_path, 'DVTPlugInCompatibilityUUID']).strip()\ninfo_plist_path = os.path.join(os.getenv('BUILT_PRODUCTS_DIR'), 'Drawer.xcplugin/Contents/Info.plist')\ninfo =  plistlib.readPlist(info_plist_path)\ninfo['DVTPlugInCompatibilityUUIDs'] = [compat_uuid]\nplistlib.writePlist(info, info_plist_path)\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D4C1C2B1B29D5B100D545EF /* Sources */ = {
